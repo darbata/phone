@@ -7,6 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
+app.use(express.static('dist'))
 
 let persons = [
     { 
@@ -30,6 +31,10 @@ let persons = [
       "number": "39-23-6423122"
     }
 ]
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+})
 
 // end points
 app.get('/info', (request, response) => {
