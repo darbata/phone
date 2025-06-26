@@ -1,7 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-const path = require('path')
 
 const app = express()
 
@@ -87,11 +86,6 @@ app.post('/api/persons', (request, response) => {
     persons = persons.concat(newPerson)
     response.status(201).json(newPerson);
 })
-
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
-})
-
 
 const PORT = 3001;
 
